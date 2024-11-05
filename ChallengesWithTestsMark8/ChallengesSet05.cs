@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
@@ -7,12 +8,25 @@ namespace ChallengesWithTestsMark8
     {
         public int GetNextNumberDivisibleByN(int startNumber, int n)
         {
-            throw new NotImplementedException();
+            int res = 0;
+            int index = startNumber + 1;
+            do
+            {
+                if (index % n == 0)
+                {
+                    res = index;
+                }
+                index++;
+            }
+            while (res == 0);
+            return res;
         }
 
         public void ChangeNamesOfBusinessesWithNoRevenueTo_CLOSED(Business[] businesses)
         {
-            throw new NotImplementedException();
+            businesses.Where(x => x.TotalRevenue == 0)
+                .ToList()
+                .ForEach(y => y.Name = "CLOSED");
         }
 
         public bool IsAscendingOrder(int[] numbers)
