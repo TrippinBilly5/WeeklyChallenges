@@ -31,27 +31,71 @@ namespace ChallengesWithTestsMark8
 
         public bool IsAscendingOrder(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null || numbers.Length == 0) { return false; }
+            for (var i = 1; i < numbers.Length; i++)
+            {
+                if (numbers[i] < numbers[i - 1])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public int SumElementsThatFollowAnEven(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null || numbers.Length == 0) { return 0; }
+            int sum = 0;
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                if (numbers[i - 1] % 2 == 0)
+                {
+                    sum += numbers[i];
+                }
+            }
+            return sum;
         }
 
         public string TurnWordsIntoSentence(string[] words)
         {
-            throw new NotImplementedException();
+            string sentence = "";
+            if (words == null || words.Length == 0) { return sentence; }
+            foreach (string word in words)
+            {
+                if (word.Trim().Length > 0)
+                {
+                    sentence += word.Trim() + " ";
+                }
+            }
+            if (sentence.Length == 0) { return sentence; }
+            return sentence.Trim() + ".";
         }
 
         public double[] GetEveryFourthElement(List<double> elements)
         {
-            throw new NotImplementedException();
+            if (elements == null || elements.Count < 4) { return new double[0]; }
+
+            List<double> result = new List<double>();
+            for (var i = 3; i < elements.Count; i += 4)
+            {
+                result.Add(elements[i]);
+            }
+            return result.ToArray();
         }
 
         public bool TwoDifferentElementsInArrayCanSumToTargetNumber(int[] nums, int targetNumber)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < nums.Length; i++)
+            {
+                for (int j = i + 1; j < nums.Length; j++)
+                {
+                    if (nums[i] + nums[j] == targetNumber)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }
